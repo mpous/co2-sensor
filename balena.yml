@@ -1,0 +1,24 @@
+name: Adafruit SCD30
+description: >-
+  Application to run Adafruit SCD30 CO2 Gas Sensor.
+fleetcta: Get inspired
+post-provisioning: >-
+  Building a CO2 sensor requires some specialized hardware.
+
+type: sw.application
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/Ribbit-Network/ribbit-network-frog-sensor'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/Ribbit-Network/ribbit-network-frog-sensor/main/software/balena_fleet_logo.png
+data:
+  defaultDeviceType: raspberrypi4-64
+  supportedDeviceTypes:
+    - raspberrypi3-64
+    - raspberrypi4-64
+version: 0.0.1

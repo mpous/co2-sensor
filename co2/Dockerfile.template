@@ -1,0 +1,29 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu-python:3.8-bionic-build-20210826
+
+# Set our working directory
+WORKDIR /usr/src/app
+
+# Install PIL for LED displays
+RUN install_packages python3-pil
+
+# Install Adafruit Blinka for CircuitPython support in Python,
+#    CircuitPython PM25 module for PMSA0031,
+#    CircuitPython SCD4x module, LED matrix display module, SGP 30
+#     
+RUN pip3 install RPi.GPIO paho-mqtt Adafruit-Blinka \
+    adafruit-circuitpython-scd30 \
+    adafruit-circuitpython-busdevice \
+    adafruit-circuitpython-dps310 \
+    adafruit-circuitpython-ina219 \
+    adafruit-circuitpython-register \
+    adafruit-extended-bus \
+    adafruit-platformdetect \   
+    sparkfun-qwiic-led-stick
+
+COPY *.py ./
+
+# Enable udevd so that plugged dynamic hardware devices show up in our container.
+ENV UDEV=1
+
+# iaq.py will run when container starts up on the device
+CMD ["python3", "co2.py"]
