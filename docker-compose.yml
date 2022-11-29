@@ -18,7 +18,7 @@ services:
     depends_on:
      - mqtt
     expose:
-      - "2947"
+      - "1883"
       - "7575"
     labels:
       io.resin.features.dbus: '1'
